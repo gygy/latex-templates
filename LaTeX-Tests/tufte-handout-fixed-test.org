@@ -1,0 +1,38 @@
+#+AUTHOR: abc
+#+OPTIONS: toc:nil
+
+Before the section.
+
+* a section παραγραφοειδής
+
+After the section.
+
+kapoio κείμενο.
+
+* A second section
+:PROPERTIES:
+:EXPORT_TITLE:    Test
+:EXPORT_AUTHOR:   xyz asdfasdfasdf
+:EXPORT_OPTIONS:  toc:t
+:END:
+
+
+
+This is only a test!
+
+** A subsection
+
+And some stuff here.
+
+Ελληνικά.
+
+* Here props again
+:PROPERTIES:
+:EXPORT_TITLE:      123
+:EXPORT_AUTHOR: asdf
+:EXPORT_OPTIONS: toc:t
+:END:
+
+
+
+asdf asdf asdf

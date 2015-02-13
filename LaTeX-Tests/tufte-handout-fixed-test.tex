@@ -1,0 +1,72 @@
+% Created 2015-02-11 Wed 16:57
+
+\documentclass[nofonts]{tufte-handout}
+\usepackage{fontspec}
+\usepackage{ifxetex}
+\setmainfont{Minion Pro}
+\usepackage{lipsum}
+
+\ifxetex
+  \newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+\fi
+
+
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\PolyglossiaSetup{greek, english}{indentfirst=false}
+
+% Some extras:
+\usepackage{hyperref} % in-document links (for TOC etc)
+\usepackage{lipsum} % lorem lipsum ready-text
+\usepackage{ulem} % underline emphasis
+
+% HEADER ENDS HERE ===============================================
+% ================================================================
+\author{abc}
+\date{\today}
+\title{tufte-handout-fixed-test}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.4.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+Before the section.
+
+\section{a section παραγραφοειδής}
+\label{sec-1}
+
+After the section.
+
+kapoio κείμενο.
+
+\section{A second section}
+\label{sec-2}
+
+
+
+This is only a test!
+
+\subsection{A subsection}
+\label{sec-2-1}
+
+And some stuff here.
+
+Ελληνικά.
+
+\section{Here props again}
+\label{sec-3}
+
+
+
+asdf asdf asdf
+% Emacs 24.4.1 (Org mode 8.2.10)
+\end{document}

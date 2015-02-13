@@ -1,0 +1,166 @@
+% Created 2015-02-12 Thu 14:18
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{IOANNIS ZANNOS}
+\date{\today}
+\title{\LaTeX{}\_Notes}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.4.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{2015}
+\label{sec-1}
+\subsection{2015-02 February}
+\label{sec-1-1}
+\subsubsection{2015-02-05 Thursday}
+\label{sec-1-1-1}
+\begin{enumerate}
+\item tufte style instructions
+\label{sec-1-1-1-1}
+
+
+
+\item tufte  - compiling with xelatex
+\label{sec-1-1-1-2}
+\url{http://www.ctan.org/pkg/tufte-latex}
+
+
+For how to compile with xelatex:
+\begin{enumerate}
+\item Answer 1
+\label{sec-1-1-1-2-1}
+
+\url{http://tex.stackexchange.com/questions/202142/trouble-shooting-tufte-title-page}
+
+Here is the answer quoted:
+
+It's a bug in the tufte suite. The minimal example
+
+\begin{verbatim}
+\documentclass{tufte-book}
+
+\title{this is a title}
+\author{me}
+
+\begin{document}
+
+\maketitle
+
+\end{document}
+\end{verbatim}
+
+also fails when compiled with latex, because with latex and xelatex there's no possibility of using microtype for letterspacing, so tufte-common.def resorts to using soul features. However, \MakeTextUppercase fails with this method.
+
+For XeLaTeX a workaround can be found in my answer to XeTeX seems to break headers in Tufte-handout
+
+\begin{verbatim}
+\documentclass{tufte-book}
+
+\usepackage{ifxetex}
+\ifxetex
+  \newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+  \usepackage{fontspec}
+\fi
+
+\title{this is a title}
+\author{me}
+
+\begin{document}
+
+\maketitle
+
+\end{document}
+\end{verbatim}
+
+Of course you'll have to define font substitutes for the text fonts; the choice
+
+\begin{verbatim}
+\ifxetex
+  \newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+  \usepackage{fontspec}
+  \setmainfont{TeX Gyre Pagella}
+  \setsansfont{TeX Gyre Heros}[Scale=MatchUppercase]
+\fi
+\end{verbatim}
+
+should produce a quite similar output. The method for choosing the font may be different on your machines, it mostly depends on the installation; so mileage may vary. (Please, ask in comments if the proposed code doesn't work for you.)
+\item answer 2
+\label{sec-1-1-1-2-2}
+\url{http://tex.stackexchange.com/questions/200722/xetex-seems-to-break-headers-in-tufte-handout}
+
+In tufte-common.def it is said that in case XeLaTeX is used, its features for letter spacing will be used, but the authors forgot to do it, so the soul fallback mechanism is used, which miserably fails.
+
+Fix the definition:
+
+\begin{verbatim}
+\documentclass[nofonts]{tufte-handout}
+\usepackage{fontspec}
+\usepackage{ifxetex}
+\setmainfont{Minion Pro}
+\usepackage{lipsum}
+
+\ifxetex
+  \newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+\fi
+
+
+\title{Problem Document Title}
+\author{Author Name}
+\date{\today}
+\begin{document}
+\maketitle
+
+\allcaps{Abcdef}\\
+\smallcaps{Abcdef}\\
+\textsc{Abcdef}
+
+\lipsum[1-10]
+\end{document}
+\end{verbatim}
+
+Check the values against compilation with LuaLaTeX.
+\end{enumerate}
+\end{enumerate}
+% Emacs 24.4.1 (Org mode 8.2.10)
+\end{document}

@@ -1,0 +1,38 @@
+#+LATEX_CLASS: letter
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \setromanfont{Hypatia Sans Pro}
+
+#+LATEX_HEADER: \def\Who{Γιάννης Ζάννος}
+#+LATEX_HEADER: \def\What{Αναπληρωτής Καθηγητής}
+#+LATEX_HEADER: \def\Where{Τμήμα Τεχνών Ήχου και Εικονας \\ Ιόνιο Πανεπιστήμιο} % Your department/institution
+#+LATEX_HEADER: \def\Address{Πλατεία Τσιριγώτη 7} % Your address
+#+LATEX_HEADER: \def\CityZip{Κέρκυρα 49100} % Your city, zip code, country, etc
+#+LATEX_HEADER: \def\Email{E-mail: iani@ionio.gr} % Your email address
+#+LATEX_HEADER: \def\TEL{Phone: +30 26610 87762} % Your phone number
+#+LATEX_HEADER: \def\URL{URL: http://larigot.avarts.ionio.gr/users/iani/wikis/iani.html} % Your URL
+#+LATEX_HEADER: \signature{\Who \\ \What} % The signature is a combination of your name and title
+#+LATEX_HEADER: \long\def\closing#1{
+#+LATEX_HEADER: \vspace{0.1in} % Some whitespace after the letter content and before the signature
+#+LATEX_HEADER: \noindent % Stop paragraph indentation
+#+LATEX_HEADER: \hspace*{\longindentation} % Move the signature right
+#+LATEX_HEADER: \parbox{\indentedwidth}{\raggedright
+#+LATEX_HEADER: #1 % Print the signature text
+#+LATEX_HEADER: \vskip 0.65in % Whitespace between the signature text and your name
+#+LATEX_HEADER: \fromsig}} % Print your name and title
+#+LATEX_HEADER: \sloppy % Prevent line overflow
+
+#+DATE: Κέρκυρα 10. 12. 2014
+
+#+BEGIN_LaTeX
+{Προς την προσωρινή Γενική Συνέλευση \\
+Τμήμα Τεχνών Ήχου και Εικόνας \\
+Ιόνιο Πανεπιστήμιο}
+
+\opening{\textbf{Θέμα:} Προσδιορισμός ημερομηνίας Φεστιβάλ του Τμήματος για το 2015}
+#+END_LaTeX
+
+Main part.
+
+#+BEGIN_LaTeX
+\closing{Υπογραφή}
+#+END_LaTeX

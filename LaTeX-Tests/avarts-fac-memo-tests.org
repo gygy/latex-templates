@@ -1,0 +1,19 @@
+* test                                    :ATTACH:
+:PROPERTIES:
+:EXPORT_TITLE: Αίτηση
+:EXPORT_AUTHOR: Προς την Προσωρινή Γενική Συνέλευση του Τμήματος Τεχνών Ήχου και Εικόνας, Ιόνιο Πανεπιστήμιο
+:EXPORT_OPTIONS: toc:nil
+:LATEX_STYLE_reminder: tufte-handout-fixed-greek.tex
+:ID:       6AD7B4A9-0C7F-4C5F-BE19-C4FEB8D98F56
+:Attachments: test.org
+:END:
+
+** Θέμα: Συνεργασία του ΤΤΗΕ με ΤΕΠΑΚ και ΝΕΜΕ (Λεμεσσός)
+
+
+Έπεται επεξήγηση.
+
+#+BEGIN_LaTeX
+\vspace{1cm}
+\marginnote{\\Ιωάννης Ζάννος\\Καθηγητής Μουσικής Πληροφορικής\\Τμήμα Τεχνών Ήχου και Εικόνας\\Ιόνιο Πανεπιστήμιο}
+#+END_LaTeX

@@ -1,0 +1,50 @@
+% Note: Mon, Dec 15 2014, 17:37 EET :
+% The example does not cover my needs.
+% Must study manual:
+% http://ftp.ntua.gr/mirror/ctan/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+
+% This is an example from:
+% http://tex.stackexchange.com/questions/32878/two-different-layouts-using-fancyhdr
+% It should be adapted for use with letter
+% Mon, Dec 15 2014, 17:18 EET
+
+\documentclass{article}
+\usepackage{fancyhdr}
+\fancypagestyle{basicstyle}{%
+  \fancyhf{}
+  \fancyhead[LE,RO]{\rightmark}
+  \fancyhead[LO,RE]{\leftmark}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{otherstyle}{%
+  \fancyhf{}
+  \fancyhead[C]{This is a customized header!}
+  \renewcommand{\headrulewidth}{0pt}}
+
+%n\pagestyle{basicstyle}
+
+\usepackage{lipsum}
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Next the following should be tried out:
+
+% from: http://tex.stackexchange.com/questions/30228/custom-first-page-with-fancyhdr
+
+\fancypagestyle{plain}{%
+   \renewcommand{\headrulewidth}{0pt}%
+   \fancyhf{}%
+   \fancyfoot[C]{\footnotesize Page \thepage\ of \pageref{LastPage}}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \Begin{document}
+% \chapter{One}
+% \section{First section}
+% \thispagestyle{otherstyle}
+% \clearpage
+% text
+% \end{document}

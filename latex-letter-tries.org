@@ -1,0 +1,68 @@
+**** letter with logo 1
+ :PROPERTIES:
+ :DATE: <2014-12-12 Fri 00:50>
+ :END:
+
+#+LATEX_CLASS: letter
+#+LATEX_HEADER: \usepackage{microtype} % Improves typography
+
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{geometry}
+#+LATEX_HEADER: \usepackage{lipsum}
+
+#+LATEX_HEADER: \geometry{headheight = 0.6in}
+#+LATEX_HEADER: \fancypagestyle{firstpage}{\fancyhf{}\fancyhead[R]{\includegraphics[height=0.5in, keepaspectratio=true]{logo.jpg}}}
+#+LATEX_HEADER: \fancypagestyle{plain}{\fancyhf{}\fancyhead[L]{\includegraphics[height=0.5in, keepaspectratio=true]{logo.jpg}}}
+#+LATEX_HEADER: \pagestyle{plain}
+
+
+#+LATEX: \opening{Dear Some Name,}
+
+Thanks. é É îÎ
+
+addedg
+
+#+LATEX: \lipsum[1-10]
+**** Trying deep customize of header
+:PROPERTIES:
+:ID:       EB319D94-FDA5-4A50-8027-41E27BAEE1B9
+:eval-id:  2
+:END:
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'org-latex-classes
+                 '("minimal-header-blabla"
+                   "\\documentclass[article]
+                   [NO-DEFAULT-PACKAGES]
+                   [NO-PACKAGES]
+                   [NO-EXTRA]"
+                   ("\\section\{%s\}" . "\\section*\{%s\}")
+                   ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+                   ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+#+END_SRC
+
+#+RESULTS:
+| minimal-header2 | \documentclass[article]                            | [NO-DEFAULT-PACKAGES]          | [NO-PACKAGES]                        | [NO-EXTRA]                                 | (\section{%s} . \section*{%s})             | (\subsection{%s} . \subsection*{%s})       | (\subsubsection{%s} . \subsubsection*{%s}) |
+| minimal-header  | \documentclass[article]                            | NO-DEFAULT-PACKAGES            | NO-PACKAGES                          | NO-EXTRA                                   | (\section{%s} . \section*{%s})             | (\subsection{%s} . \subsection*{%s})       | (\subsubsection{%s} . \subsubsection*{%s}) |
+| newlfm-letter   | \documentclass[11pt,letter,dateno,sigleft]{newlfm} | (\chapter{%s} . \chapter*{%s}) | (\section{%s} . \section*{%s})       | (\subsection{%s} . \subsection*{%s})       | (\subsubsection{%s} . \subsubsection*{%s}) | (\paragraph{%s} . \paragraph*{%s})         |                                            |
+| letter          | \documentclass{letter}                             | (\chapter{%s} . \chapter*{%s}) | (\section{%s} . \section*{%s})       | (\subsection{%s} . \subsection*{%s})       | (\subsubsection{%s} . \subsubsection*{%s}) | (\paragraph{%s} . \paragraph*{%s})         |                                            |
+| section-to-book | \documentclass{memoir}                             | (\chapter{%s} . \chapter*{%s}) | (\section{%s} . \section*{%s})       | (\subsection{%s} . \subsection*{%s})       | (\subsubsection{%s} . \subsubsection*{%s}) | (\paragraph{%s} . \paragraph*{%s})         |                                            |
+| memoir          | \documentclass[12pt,a4paper,article]{memoir}       | (\section{%s} . \section*{%s}) | (\subsection{%s} . \subsection*{%s}) | (\subsubsection{%s} . \subsubsection*{%s}) | (\paragraph{%s} . \paragraph*{%s})         | (\subparagraph{%s} . \subparagraph*{%s})   |                                            |
+| beamer          | \documentclass[presentation]{beamer}               | (\section{%s} . \section*{%s}) | (\subsection{%s} . \subsection*{%s}) | (\subsubsection{%s} . \subsubsection*{%s}) |                                            |                                            |                                            |
+| article         | \documentclass[11pt]{article}                      | (\section{%s} . \section*{%s}) | (\subsection{%s} . \subsection*{%s}) | (\subsubsection{%s} . \subsubsection*{%s}) | (\paragraph{%s} . \paragraph*{%s})         | (\subparagraph{%s} . \subparagraph*{%s})   |                                            |
+| report          | \documentclass[11pt]{report}                       | (\part{%s} . \part*{%s})       | (\chapter{%s} . \chapter*{%s})       | (\section{%s} . \section*{%s})             | (\subsection{%s} . \subsection*{%s})       | (\subsubsection{%s} . \subsubsection*{%s}) |                                            |
+| book            | \documentclass[11pt]{book}                         | (\part{%s} . \part*{%s})       | (\chapter{%s} . \chapter*{%s})       | (\section{%s} . \section*{%s})             | (\subsection{%s} . \subsection*{%s})       | (\subsubsection{%s} . \subsubsection*{%s}) |                                            |
+
+**** letter with logo 2
+
+#+LATEX_CLASS:minimal-header-blabla
+
+This is a test
+
+#+BEGIN_SRC emacs-lisp
+(org-latex-export-as-latex t t)
+#+END_SRC
+
+#+RESULTS:
+| lambda | (p status) | (let ((proc-buffer (process-buffer p))) (when (eq (process-status p) (quote exit)) (unwind-protect (if (zerop (process-exit-status p)) (unwind-protect (let ((results (with-current-buffer proc-buffer (goto-char (point-max)) (backward-sexp) (read (current-buffer))))) (funcall (lambda (output) (with-current-buffer (get-buffer-create *Org LATEX Export*) (erase-buffer) (setq buffer-file-coding-system (quote utf-8-unix)) (insert output) (goto-char (point-min)) (org-export-add-to-stack (current-buffer) (quote latex)) (ignore-errors (funcall #[nil \300 \207 [LaTeX-mode] 1])))) results)) (unless org-export-async-debug (and (get-buffer proc-buffer) (kill-buffer proc-buffer)))) (org-export-add-to-stack proc-buffer nil p) (ding) (message Process '%s' exited abnormally p)) (unless org-export-async-debug (delete-file /var/folders/90/ch_zzn2x6qv3jnzr3b2h_yg00000gn/T/org-export-process133178bY))))) |

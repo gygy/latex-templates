@@ -1,0 +1,24 @@
+\documentclass{article}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage{artemisia} %Greek? - but kills french!
+
+\usepackage[headheight=5cm, top=4.3cm, a4paper]{geometry}
+\usepackage{graphicx}
+
+\usepackage{lastpage} % for the number of the last page in the document
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{--- DRAFT ---}
+\chead{\includegraphics[height=2.5cm, keepaspectratio=true]{/Users/iani/.latex-media/logo-iu.png}}
+\rhead{Section \thesection}
+\lfoot{\today}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\usepackage{lipsum}
+\usepackage{hyperref}
+
+% for customizing the first page
+% see http://tex.stackexchange.com/questions/30228/custom-first-page-with-fancyhdr

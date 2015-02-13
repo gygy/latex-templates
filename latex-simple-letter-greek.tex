@@ -1,0 +1,34 @@
+% This is a minimal letter setting.
+% It produces a decent thou simple article
+% with page numbering in the footer.
+% It uses polyglossia and Hypatia Font.
+% It covers western european languages and greek - but not japanese.
+
+\documentclass{letter}
+
+% Customize font - needed to cover latin and greek with one font
+\usepackage{fontspec}
+\setmainfont{Hypatia Sans Pro}
+
+% Customize language of date and other aspects of automatic-text
+\usepackage{polyglossia}
+\setmainlanguage{greek}
+\PolyglossiaSetup{greek, english}{indentfirst=false}
+
+% next package is always necessary when exporting from Org mode.
+\usepackage{hyperref} % needed for org-mode's inserted table of contents.
+
+% Provide filler text for experimenting:
+\usepackage{lipsum}
+
+\usepackage{ulem}
+
+% Prevent overflow of lines in justified paragraphs:
+\sloppy
+
+% next customize header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% NOTE: Mon, Dec 15 2014, 16:12 EET: This works perfectly.
+% French, German etc + Greek chars are supported.

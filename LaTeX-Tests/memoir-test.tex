@@ -1,0 +1,73 @@
+% Created 2015-02-05 Thu 11:06
+
+\documentclass[10pt,twoside,openright]{memoir}
+%\usepackage{createspace}
+%\usepackage[size=pocket,noicc]{createspace}
+\usepackage[paperwidth=4.25in, paperheight=6.875in,bindingoffset=.75in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Hypatia Sans Pro}
+
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\PolyglossiaSetup{greek, english}{indentfirst=false}
+
+%\usepackage[T1]{fontenc}
+% \usepackage[latin1]{inputenc}
+% \usepackage[spanish, english]{babel}
+
+\usepackage{tgtermes}
+
+%\usepackage{mathpazo}
+\usepackage[protrusion=true,expansion=true]{microtype}
+%\usepackage{type1cm}
+%\usepackage{lettrine}
+
+%\checkandfixthelayout
+
+% See the ``Memoir customise'' template for some common customisations
+% Don't forget to read the Memoir manual: memman.pdf
+
+%\title{TITLE OF BOOK}
+%\author{NAME OF AUTHOR}
+%\date{} % Delete this line to display the current date
+
+%% BEGIN TITLE
+
+\makeatletter
+\def\maketitle{%
+  \null
+  \thispagestyle{empty}%
+  \vfill
+  \begin{center}\leavevmode
+    \normalfont
+    {\LARGE\raggedleft \@author\par}%
+    \hrulefill\par
+    {\huge\raggedright \@title\par}%
+    \vskip 1cm
+%    {\Large \@date\par}%
+  \end{center}%
+  \vfill
+  \null
+  \cleardoublepage
+  }
+\makeatother
+\author{NAME OF AUTHOR}
+\author{NAME OF AUTHOR}
+\title{TITLE OF BOOK}
+\date{}
+\author{IOANNIS ZANNOS}
+\date{\today}
+\title{test}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.4.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+This is a test.
+ asdfsdf
+% Emacs 24.4.1 (Org mode 8.2.10)
+\end{document}

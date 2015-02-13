@@ -1,0 +1,54 @@
+% Created 2015-02-11 Wed 16:56
+
+% This is a minimal letter setting.
+% It produces a decent thou simple article
+% with page numbering in the footer.
+% It uses polyglossia and Hypatia Font.
+% It covers western european languages and greek - but not japanese.
+
+\documentclass{letter}
+
+% Customize font - needed to cover latin and greek with one font
+\usepackage{fontspec}
+\setmainfont{Hypatia Sans Pro}
+
+% Customize language of date and other aspects of automatic-text
+\usepackage{polyglossia}
+\setmainlanguage{greek}
+\PolyglossiaSetup{greek, english}{indentfirst=false}
+
+% next package is always necessary when exporting from Org mode.
+\usepackage{hyperref} % needed for org-mode's inserted table of contents.
+
+% Provide filler text for experimenting:
+\usepackage{lipsum}
+
+\usepackage{ulem}
+
+% Prevent overflow of lines in justified paragraphs:
+\sloppy
+
+% next customize header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% NOTE: Mon, Dec 15 2014, 16:12 EET: This works perfectly.
+% French, German etc + Greek chars are supported.
+\author{IOANNIS ZANNOS}
+\date{\today}
+\title{Θέμα: Συνεργασία του ΤΤΗΕ με ΤΕΠΑΚ και ΝΕΜΕ (Λεμεσσός)}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.4.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+Έπεται επεξήγηση.
+
+\vspace{1cm}
+\marginnote{\\Ιωάννης Ζάννος\\Καθηγητής Μουσικής Πληροφορικής\\Τμήμα Τεχνών Ήχου και Εικόνας\\Ιόνιο Πανεπιστήμιο}
+% Emacs 24.4.1 (Org mode 8.2.10)
+\end{document}
